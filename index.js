@@ -111,8 +111,8 @@ app.get("/api", (req, res) => {
 });
 
 
-/********************* START OF ASSIGNMENT **********************/
-/** Create the following routes using good organizational coding **/
+/******************** START OF ASSIGNMENT *********************/
+/** Create following routes using good organizational coding **/
 
 /*** GET / api / users /: id / posts ***/
 // Retrieves all posts by a user with the specified id
