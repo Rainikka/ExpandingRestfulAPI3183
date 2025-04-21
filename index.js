@@ -44,11 +44,13 @@ ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
 
 // Valid API Keys.
 let apiKeys = ["perscholas", "ps-example", "hJAsknw-L198sAJD-l3kasx"];
+
 // New middleware to check for API keys!
 // Note that if the key is not verified,
 // we do not call next(); this is the end.
 // This is why we attached the /api/ prefix
 // to our routing at the beginning!
+
 app.use("/api", function (req, res, next) {
   var key = req.query["api-key"];
 
@@ -113,23 +115,26 @@ app.get("/api", (req, res) => {
 /** Create the following routes using good organizational coding **/
 
 /*** GET / api / users /: id / posts ***/
-// Retrieves all posts by a user with the specified id.
+// Retrieves all posts by a user with the specified id
+
 app.get("/api/users/:id/posts", (req, res, next) => {
   const userId = parseInt(req.params.id);
   res.json({ message: `All posts for user ${userId}` });
 });
 
 /*** GET / api / comments ***/
-// Place to store comments, but you do not need to populate that data.
+// Place to store comments, but you do not need to populate that data
+
 app.get("/api/comments", (req, res) => {
   res.json({ message: "Comments would go here" });
 });
 
 /*** POST / api / comments ***/
-// Create a new comment object, with fields: id: a unique identifier.
-//   userId: the id of the user that created the comment.
-//   postId: the id of the post the comment was made on.
-//   body: the text of the comment.
+// Create a new comment object, with fields: id: a unique identifier
+//   userId: the id of the user that created the comment
+//   postId: the id of the post the comment was made on
+//   body: the text of the comment
+
 app.post("/api/comments", (req, res) => {
   const newComment = {
     id: comments.length + 1,
@@ -143,19 +148,22 @@ app.post("/api/comments", (req, res) => {
 });
 
 /*** GET / api / comments / :id ***/
-// Retrieves the comment with the specified id.
+// Retrieves the comment with the specified id
+
 app.get("/api/comments/:id", (req, res) => {
   res.json({ message: `Comment ${req.params.id}` });
 });
 
 /*** PATCH / api / comments / :id ***/
-// Used to update a comment with the specified id with a new body.
+// Used to update a comment with the specified id with a new body
+
 app.patch("/api/comments/:id", (req, res) => {
   res.json({ message: `Comment ${req.params.id}e` });
 });
 
 /*** DELETE / api / comments / :id ***/
-// Used to delete a comment with the specified id.
+// Used to delete a comment with the specified id
+
 app.delete("/api/comments/:id", (req, res) => {
   res.json({ message: `Comment ${req.params.id}e` });
 });
@@ -172,12 +180,14 @@ app.use((req, res, next) => {
 // This changes our error handling throughout the application,
 // but allows us to change the processing of ALL errors
 // at once in a single location, which is important for
-// scalability and maintainability.
+// scalability and maintainability
+
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({ error: err.message });
 });
 
+/*** Listening PORT ***/
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}.`);
 });
