@@ -1,7 +1,6 @@
 {
   "name": "alab318.3",
   "version": "1.0.0",
-  "description": "Node.js template",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
